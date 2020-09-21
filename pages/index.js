@@ -18,19 +18,15 @@ class Index extends React.Component {
           onSelection={(resources) => this.handleSelection(resources)}
           onCancel={() => this.setState({ open: false })}
         />
-        <Layout>
-          <EmptyState
-            heading="Welcome"
-            action={{
-              content: "Select products",
-              onAction: () => this.setState({ open: true }),
-            }}
-            // image={img}
-          >
-            <p>Select products.</p>
-          </EmptyState>
-          <ResourceListWithProducts />
-        </Layout>
+        <EmptyState
+          heading="Welcome"
+          action={{
+            content: "Select products",
+            onAction: () => this.setState({ open: true }),
+          }}
+          // image={img}
+        ></EmptyState>
+        <ResourceListWithProducts />
       </Page>
     );
   }
