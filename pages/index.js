@@ -3,19 +3,14 @@ import { ResourcePicker } from "@shopify/app-bridge-react";
 import store from "store-js";
 import ResourceListWithProducts from "../components/ResourceList";
 
-const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
+const img = "https://picsum.photos/200/300";
 
 class Index extends React.Component {
   state = { open: false };
   render() {
     const emptyState = !store.get("ids");
     return (
-      <Page
-        primaryAction={{
-          content: "Select products",
-          onAction: () => this.setState({ open: true }),
-        }}
-      >
+      <Page>
         <ResourcePicker
           resourceType="Product"
           showVariants={false}
@@ -23,22 +18,19 @@ class Index extends React.Component {
           onSelection={(resources) => this.handleSelection(resources)}
           onCancel={() => this.setState({ open: false })}
         />
-        {emptyState ? (
-          <Layout>
-            <EmptyState
-              heading="Discount your products temporarily"
-              action={{
-                content: "Select products",
-                onAction: () => this.setState({ open: true }),
-              }}
-              image={img}
-            >
-              <p>Select products to change their price temporarily.</p>
-            </EmptyState>
-          </Layout>
-        ) : (
+        <Layout>
+          <EmptyState
+            heading="Welcome"
+            action={{
+              content: "Select products",
+              onAction: () => this.setState({ open: true }),
+            }}
+            // image={img}
+          >
+            <p>Select products.</p>
+          </EmptyState>
           <ResourceListWithProducts />
-        )}
+        </Layout>
       </Page>
     );
   }
