@@ -1,3 +1,4 @@
+console.log("hello");
 const handleAccountClick = (e) => {
   e.preventDefault();
   console.log("hello2");
